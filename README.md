@@ -2,6 +2,8 @@ yii2-date-range
 ===============
 Wrapper of bootstrap date range picker for Yii2.
 
+# IN DEVELOPING! NOT USE!
+
 Installation
 ------------
 
