@@ -1,5 +1,5 @@
-yii2-date-range
-===============
+yii2-date-range-picker
+=====================
 Wrapper of bootstrap date range picker for Yii2.
 
 # IN DEVELOPING! NOT USE!
