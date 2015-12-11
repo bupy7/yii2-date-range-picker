@@ -41,7 +41,7 @@ echo $form->field($model, 'date_range')->widget(DateRangePicker::className(), [
     ],
 
     // Language of plugin. If `null` then `\yii\base\Application::language` will be used.
-    'language' => 'en',
+    'language' => 'ru',
 
     // Converting date format from PHP DateTime to Moment.js DateTime.
     'convertDateFormat' => true,
@@ -68,7 +68,7 @@ DateRangePicker::widget([
     ],
 
     // Language of plugin. If `null` then `\yii\base\Application::language` will be used.
-    'language' => 'en',
+    'language' => 'ru',
 
     // Converting date format from PHP DateTime to Moment.js DateTime.
     'convertDateFormat' => true,

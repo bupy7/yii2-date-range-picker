@@ -12,7 +12,7 @@ use yii\web\AssetBundle;
  * @author Belosludcev Vasilij <bupy765@gmail.com>
  * @since 1.0.0
  */
-class Asset extends AssetBundle
+class DateRangePickerAsset extends AssetBundle
 {
     /**
      * @inheritdoc

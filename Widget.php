@@ -9,7 +9,7 @@ use yii\web\JsExpression;
 use yii\web\View;
 use yii\helpers\Html;
 use bupy7\drp\traits\WidgetTrait;
-use bupy7\drp\assets\Asset;
+use bupy7\drp\assets\DateRangePickerAsset;
 use bupy7\drp\assets\MomentAsset;
 
 /**
@@ -99,7 +99,7 @@ class Widget extends InputWidget
     {
         $momentAsset = MomentAsset::register($this->view);
         $momentAsset->language = $this->language;
-        Asset::register($this->view);
+        DateRangePickerAsset::register($this->view);
     }
     
     /**
