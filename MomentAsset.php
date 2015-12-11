@@ -42,7 +42,7 @@ class MomentAsset extends AssetBundle
     public function registerAssetFiles($view)
     {
         if ($this->language !== null) {
-            array_unshift($this->js, "locale/{$this->language}.js");
+            $this->js[] = "locale/{$this->language}.js";
         }
         parent::registerAssetFiles($view);
     }
