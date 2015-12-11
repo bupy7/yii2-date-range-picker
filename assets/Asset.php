@@ -34,6 +34,6 @@ class Asset extends AssetBundle
      * @inheritdoc
      */
     public $depends = [
-        'bupy7\drp\MomentAsset',
+        'bupy7\drp\assets\MomentAsset',
     ];
 }
