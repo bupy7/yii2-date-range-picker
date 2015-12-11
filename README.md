@@ -1,6 +1,11 @@
 yii2-date-range-picker
 =====================
 
+[![Latest Stable Version](https://poser.pugx.org/bupy7/yii2-date-range-picker/v/stable)](https://packagist.org/packages/bupy7/yii2-date-range-picker) 
+[![Total Downloads](https://poser.pugx.org/bupy7/yii2-date-range-picker/downloads)](https://packagist.org/packages/bupy7/yii2-date-range-picker) 
+[![Latest Unstable Version](https://poser.pugx.org/bupy7/yii2-date-range-picker/v/unstable)](https://packagist.org/packages/bupy7/yii2-date-range-picker) 
+[![License](https://poser.pugx.org/bupy7/yii2-date-range-picker/license)](https://packagist.org/packages/bupy7/yii2-date-range-picker)
+
 Wrapper of bootstrap date range picker for Yii2.
 
 More information about plugin: https://github.com/dangrossman/bootstrap-daterangepicker
