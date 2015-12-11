@@ -50,7 +50,7 @@ class Widget extends InputWidget
      * format of Moment.js library from PHP DateTime format.
      * @see WidgetTrait::convertDateFormat()
      */
-    public $convertFormat = false;
+    public $convertDateFormat = false;
     /**
      * @inheritdoc
      */
@@ -63,7 +63,7 @@ class Widget extends InputWidget
     {
         parent::init();
         $this->language = $this->convertLanguage($this->language, Yii::$app->language);
-        if ($this->convertFormat && isset($this->pluginOptions['locale']['format'])) {
+        if ($this->convertDateFormat && isset($this->pluginOptions['locale']['format'])) {
             $this->pluginOptions['locale']['format'] = $this->convertDateFormat($this->pluginOptions['locale']['format']);
         } 
     }
