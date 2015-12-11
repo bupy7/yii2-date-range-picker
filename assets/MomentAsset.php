@@ -1,6 +1,6 @@
 <?php
 
-namespace bupy7\date\range\picker;
+namespace bupy7\drp\assets;
 
 use yii\web\AssetBundle;
 

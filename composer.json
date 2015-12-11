@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "bupy7\\date\\range\\picker\\": ""
+            "bupy7\\drp\\": ""
         }
     }
 }

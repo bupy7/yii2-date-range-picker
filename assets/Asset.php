@@ -1,6 +1,6 @@
 <?php
 
-namespace bupy7\date\range\picker;
+namespace bupy7\drp\assets;
 
 use yii\web\AssetBundle;
 
@@ -34,6 +34,6 @@ class Asset extends AssetBundle
      * @inheritdoc
      */
     public $depends = [
-        'bupy7\date\range\picker\MomentAsset',
+        'bupy7\drp\MomentAsset',
     ];
 }

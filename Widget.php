@@ -1,6 +1,6 @@
 <?php
 
-namespace bupy7\date\range\picker;
+namespace bupy7\drp;
 
 use Yii;
 use yii\widgets\InputWidget;
@@ -8,6 +8,9 @@ use yii\helpers\Json;
 use yii\web\JsExpression;
 use yii\web\View;
 use yii\helpers\Html;
+use bupy7\drp\traits\WidgetTrait;
+use bupy7\drp\assets\Asset;
+use bupy7\drp\assets\MomentAsset;
 
 /**
  * Wrapper of bootstrap date range picker for Yii2.
@@ -19,6 +22,8 @@ use yii\helpers\Html;
  */
 class Widget extends InputWidget
 {
+    use WidgetTrait;
+    
     /**
      * The key that identifies the JS code block.
      */
@@ -30,15 +35,26 @@ class Widget extends InputWidget
      */
     public $pluginOptions = [];
     /**
-     * @var array Events of plugin.
+     * @var array Events of plugin where `key` is event name and `value` is handler function.
      * @see http://www.daterangepicker.com/#events
      */
     public $pluginEvents = [];
     /**
      * @var string Language of plugin. If `null` then `\yii\base\Application::language` will be used.
      * @see MomentAsset::registerAssetFiles()
+     * @see WidgetTrait::convertLanguage()
      */
     public $language;
+    /**
+     * @var boolean Whether set `true` property `$pluginOptions['locale']['format']` will be converting to correct
+     * format of Moment.js library from PHP DateTime format.
+     * @see WidgetTrait::convertDateFormat()
+     */
+    public $convertFormat = false;
+    /**
+     * @inheritdoc
+     */
+    public $options = ['class' => 'form-control'];
     
     /**
      * @inheritdoc
@@ -46,26 +62,10 @@ class Widget extends InputWidget
     public function init()
     {
         parent::init();
-        $language = $this->language ?: Yii::$app->language;
-        $except = [
-            'ar',
-            'de',
-            'en',
-            'hy',
-            'ms',
-            'pt',
-            'sr',
-            'tl',
-            'tzm',
-            'zh',
-        ];
-        $isValid = true;
-        for ($i = 0; $i != count($except); $i++) {
-            $isValid = $isValid && stripos($language, $except[$i]) !== 0;
-        }
-        if ($isValid) {
-            $this->language = explode('-', $language)[0];
-        }
+        $this->language = $this->convertLanguage($this->language, Yii::$app->language);
+        if ($this->convertFormat && isset($this->pluginOptions['locale']['format'])) {
+            $this->pluginOptions['locale']['format'] = $this->convertDateFormat($this->pluginOptions['locale']['format']);
+        } 
     }
     
     /**
@@ -76,7 +76,15 @@ class Widget extends InputWidget
         $this->registerAssets();
         $this->registerClientScripts();
         $this->registerPluginEvents();
-        
+        return $this->renderFieldInput();
+    }
+    
+    /**
+     * Rendering field input of date range picker.
+     * @return string
+     */
+    protected function renderFieldInput()
+    {
         if ($this->hasModel()) {
             return Html::activeTextInput($this->model, $this->attribute, $this->options);
         } else {
