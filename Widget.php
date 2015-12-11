@@ -107,6 +107,13 @@ class Widget extends InputWidget
      */
     protected function registerClientScripts()
     {
+        if (isset($this->pluginOptions['ranges'])) {
+            $ranges = [];
+            foreach ($this->pluginOptions['ranges'] as $label => $value) {
+                $ranges[$label] = new JsExpression($value);
+            }
+            $this->pluginOptions['ranges'] = $ranges;
+        }
         $pluginOptions = Json::encode($this->pluginOptions);
         $this->view->registerJs("$('#{$this->options['id']}').daterangepicker({$pluginOptions});");
     }
