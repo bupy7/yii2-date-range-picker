@@ -44,6 +44,7 @@ class Widget extends InputWidget
      */
     public function init()
     {
+        parent::init();
         $language = $this->language ?: Yii::$app->language;
         $except = [
             'ar',
