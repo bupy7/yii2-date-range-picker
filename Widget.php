@@ -92,7 +92,7 @@ class Widget extends InputWidget
     protected function registerClientScripts()
     {
         $pluginOptions = Json::encode($this->pluginOptions);
-        $this->view->registerJs("$('#{$this->options['id']}').daterangepicker({$pluginOptions})");
+        $this->view->registerJs("$('#{$this->options['id']}').daterangepicker({$pluginOptions});");
     }
     
     /**
@@ -104,7 +104,7 @@ class Widget extends InputWidget
             if (!empty($event)) {
                 $handler = new JsExpression($handler);
                 $this->view->registerJs(
-                    "$('#{$this->options['id']}').on('{$event}', {$handler})",
+                    "$('#{$this->options['id']}').on('{$event}', {$handler});",
                     View::POS_READY,
                     self::JS_KEY . 'events/' . $event
                 );
