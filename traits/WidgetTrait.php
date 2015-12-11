@@ -2,6 +2,8 @@
 
 namespace bupy7\drp\traits;
 
+use yii\helpers\FormatConverter;
+
 /**
  * Main trait with methods for corrent work of widget.
  * @author Belosludcev Vasilij <https://github.com/bupy7>
@@ -41,7 +43,7 @@ trait WidgetTrait
     }
     
     /**
-     * Converting the date format from PHP DateTime to Moment.js DateTime format.
+     * Converting the date format from PHP DateTime (or ICU format) to Moment.js DateTime format.
      * @param string $format the PHP date format string
      * @return string
      * @see http://php.net/manual/en/function.date.php
@@ -49,6 +51,11 @@ trait WidgetTrait
      */
     protected function convertDateFormat($format)
     {
+        if (strncmp($format, 'php:', 4) === 0) {
+            $format = substr($format, 4);
+        } else {
+            $format = FormatConverter::convertDateIcuToPhp($format);
+        }      
         return strtr($format, [
             // meridian lowercase remains same (not uses)
             // 'a' => 'a',
