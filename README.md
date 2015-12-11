@@ -30,4 +30,5 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \bupy7\daterange\AutoloadExample::widget(); ?>```
+// example
+```
