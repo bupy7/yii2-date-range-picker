@@ -7,6 +7,7 @@ use yii\widgets\InputWidget;
 use yii\helpers\Json;
 use yii\web\JsExpression;
 use yii\web\View;
+use yii\helpers\Html;
 
 /**
  * Wrapper of bootstrap date range picker for Yii2.
@@ -75,6 +76,12 @@ class Widget extends InputWidget
         $this->registerAssets();
         $this->registerClientScripts();
         $this->registerPluginEvents();
+        
+        if ($this->hasModel()) {
+            return Html::activeTextInput($this->model, $this->attribute, $this->options);
+        } else {
+            return Html::textInput($this->name, $this->value, $this->options);
+        }
     }
     
     /**
