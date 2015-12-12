@@ -129,7 +129,7 @@ class Widget extends InputWidget
                 $this->view->registerJs(
                     "$('#{$this->options['id']}').on('{$event}', {$handler});",
                     View::POS_READY,
-                    self::JS_KEY . 'events/' . $event
+                    self::JS_KEY . $this->options['id'] . '/events/' . $event
                 );
             }
         }
